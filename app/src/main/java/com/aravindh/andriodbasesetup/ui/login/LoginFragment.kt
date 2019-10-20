@@ -1,0 +1,40 @@
+package com.aravindh.andriodbasesetup.ui.login
+
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import com.aravindh.andriodbasesetup.R
+import com.aravindh.andriodbasesetup.base.BaseFragment
+import com.aravindh.andriodbasesetup.databinding.FragmentLoginBinding
+
+/**
+ * A simple [Fragment] subclass.
+ */
+class LoginFragment : BaseFragment() {
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+
+        val binding: FragmentLoginBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
+
+
+        binding.buttonLogin.setOnClickListener {
+            navigationTransaction(LoginFragmentDirections.actionLoginFragmentToProfileFragment())
+        }
+
+        val args = arguments?.let { LoginFragmentArgs.fromBundle(it) }
+        args?.profileType?.let { showToast(it) }
+
+        return binding.root
+    }
+
+
+}

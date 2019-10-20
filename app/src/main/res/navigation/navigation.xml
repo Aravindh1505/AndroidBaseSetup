@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.aravindh.andriodbasesetup.ui.MainFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
+        <action
+            android:id="@+id/action_mainFragment_to_registerFragment"
+            app:destination="@id/registerFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.aravindh.andriodbasesetup.ui.profile.ProfileFragment"
+        android:label="@string/st_profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_profileFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@+id/navigation" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.aravindh.andriodbasesetup.ui.about.AboutFragment"
+        android:label="@string/st_about"
+        tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.aravindh.andriodbasesetup.ui.settings.SettingsFragment"
+        android:label="@string/st_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.aravindh.andriodbasesetup.ui.login.LoginFragment"
+        android:label="@string/st_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:popUpTo="@+id/loginFragment"
+            app:popUpToInclusive="true" />
+
+        <argument
+            android:name="profile_type"
+            app:argType="string" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.aravindh.andriodbasesetup.ui.register.RegisterFragment"
+        android:label="@string/st_register"
+        tools:layout="@layout/fragment_register" />
+</navigation>
