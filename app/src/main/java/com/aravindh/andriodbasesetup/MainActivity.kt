@@ -8,6 +8,7 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.aravindh.andriodbasesetup.databinding.ActivityMainBinding
+import com.aravindh.andriodbasesetup.utils.Logger
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,6 +18,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Logger.d("onCreate")
+
         val binding: ActivityMainBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
 
@@ -28,5 +31,35 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController, drawerLayout)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Logger.d("onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Logger.d("onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Logger.d("onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Logger.d("onStop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Logger.d("onDestroy")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Logger.d("onRestart")
     }
 }
