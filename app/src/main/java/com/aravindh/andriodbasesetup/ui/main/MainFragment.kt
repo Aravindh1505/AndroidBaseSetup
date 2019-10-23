@@ -45,7 +45,7 @@ class MainFragment : BaseFragment() {
         }
 
         if (savedInstanceState != null) {
-           // savedInstanceState.getString(EDIT_TEXT_VALUE)?.let { Logger.d("EDIT_TEXT_VALUE : $it") }
+            // savedInstanceState.getString(EDIT_TEXT_VALUE)?.let { Logger.d("EDIT_TEXT_VALUE : $it") }
 
             binding.messageEditText.setText(savedInstanceState.getString(EDIT_TEXT_VALUE))
         }
@@ -60,15 +60,15 @@ class MainFragment : BaseFragment() {
         return binding.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.main_menu, menu)
+        inflater.inflate(R.menu.main_menu, menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(
-            item!!,
-            view!!.findNavController()
+            item, view!!.findNavController()
         ) || super.onOptionsItemSelected(item)
     }
 
