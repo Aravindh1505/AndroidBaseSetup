@@ -46,8 +46,7 @@ class MainFragment : BaseFragment() {
 
         if (savedInstanceState != null) {
             // savedInstanceState.getString(EDIT_TEXT_VALUE)?.let { Logger.d("EDIT_TEXT_VALUE : $it") }
-
-            binding.messageEditText.setText(savedInstanceState.getString(EDIT_TEXT_VALUE))
+           // binding.messageEditText.setText(savedInstanceState.getString(EDIT_TEXT_VALUE))
         }
 
         binding.buttonRegister.setOnClickListener {
@@ -76,7 +75,7 @@ class MainFragment : BaseFragment() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         Logger.w("onSaveInstanceState called...")
-        outState.putString(EDIT_TEXT_VALUE, binding.messageEditText.text.toString().trim())
+        //outState.putString(EDIT_TEXT_VALUE, binding.messageEditText.text.toString().trim())
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {

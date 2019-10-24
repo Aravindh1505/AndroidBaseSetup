@@ -59,4 +59,12 @@ dependencies {
     //View model + Live data
     implementation "androidx.lifecycle:lifecycle-extensions:$version_lifecycle"
 
+    //Room Database
+    implementation "androidx.room:room-runtime:$version_room"
+    kapt "androidx.room:room-compiler:$version_room"
+
+    //Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version_coroutines"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version_coroutines"
+
 }
