@@ -1,10 +1,11 @@
-package com.aravindh.andriodbasesetup.database
+package com.aravindh.andriodbasesetup.database.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
+import com.aravindh.andriodbasesetup.database.entities.User
 
 @Dao
 interface UserDao {
@@ -20,6 +21,9 @@ interface UserDao {
 
     @Query("select * from user_table order by userId desc")
     fun getAllUsers(): LiveData<List<User>>
+
+    @Query("select count(*) from user_table")
+    fun getCount(): LiveData<Int>
 
     @Query("delete from user_table")
     fun clear()

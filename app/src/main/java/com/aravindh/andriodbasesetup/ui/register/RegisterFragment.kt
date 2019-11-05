@@ -12,6 +12,7 @@ import com.aravindh.andriodbasesetup.R
 import com.aravindh.andriodbasesetup.base.BaseFragment
 import com.aravindh.andriodbasesetup.database.MyDatabase
 import com.aravindh.andriodbasesetup.databinding.FragmentRegisterBinding
+import com.aravindh.andriodbasesetup.utils.ErrorCodes
 import com.aravindh.andriodbasesetup.utils.Logger
 import com.aravindh.andriodbasesetup.utils.getViewModel
 
@@ -41,29 +42,43 @@ class RegisterFragment : BaseFragment() {
         binding.registrationViewModel = viewModel
         binding.lifecycleOwner = this
 
+        val adapter = UserAdapter()
+        binding.userRecyclerView.adapter = adapter
 
 
-        val users = userDao.getAllUsers()
-        users.observe(this, Observer {
-            Logger.d("List size ${it.size}")
-
-            if (it.isNotEmpty()) {
-                for (user in it) {
-                    Logger.d(user.userName)
+        viewModel.status.observe(this, Observer {
+            when (it) {
+                ErrorCodes.ERROR_NAME -> showToast("Invalid name")
+                ErrorCodes.ERROR_MOBILE_NUMBER -> showToast("Invalid mobile number")
+                ErrorCodes.ERROR_EMAIL -> showToast("Invalid email address")
+                ErrorCodes.ERROR_PASSWORD -> showToast("Invalid password")
+                ErrorCodes.SUCCESS -> {
+                    showToast("User registered successfully")
+//                    viewModel.clearFormFields()
                 }
             }
         })
 
 
-        /*viewModel.users?.observe(this, Observer { users ->
+
+        viewModel.users?.observe(this, Observer { users ->
             Logger.d("List size ${users.size}")
 
             if (users.isNotEmpty()) {
-                for (user in users){
-                    Logger.d("userName : ${user.userName}")
+                users.let {
+                    adapter.submitList(it)
                 }
             }
-        })*/
+
+            /*if (users.isNotEmpty()) {
+                for (user in users) {
+                    Logger.d("userName : ${user.userName}")
+                    Logger.d("userMobileNumber : ${user.userMobileNumber}")
+                    Logger.d("userEmailAddress : ${user.userEmailAddress}")
+                    Logger.d("userPassword : ${user.userPassword}")
+                }
+            }*/
+        })
 
 
         return binding.root

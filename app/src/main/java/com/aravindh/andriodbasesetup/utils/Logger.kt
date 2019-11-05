@@ -58,7 +58,7 @@ object Logger {
         Log.e(TAG, createLog(data))
     }
 
-    fun showMessage(context: Context, message: String) {
+    fun showMessage(context: Context?, message: String?) {
         if (isDebugMode) {
             getMethodNames(Throwable().stackTrace)
             Toast.makeText(context, message, Toast.LENGTH_SHORT).show()

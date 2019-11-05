@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -24,7 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:text="@={registrationViewModel.name}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -38,7 +40,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway"
-                android:inputType="number" />
+                android:inputType="number"
+                android:text="@={registrationViewModel.mobileNumber}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -52,7 +55,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:text="@={registrationViewModel.email}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -66,7 +70,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:text="@={registrationViewModel.password}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,6 +83,13 @@
             android:onClick="@{()->registrationViewModel.register()}"
             android:text="@string/st_register"
             android:textAllCaps="false" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/user_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </LinearLayout>
 </layout>

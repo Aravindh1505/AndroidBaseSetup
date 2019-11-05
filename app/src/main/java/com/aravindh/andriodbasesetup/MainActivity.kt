@@ -8,7 +8,6 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.aravindh.andriodbasesetup.databinding.ActivityMainBinding
-import com.aravindh.andriodbasesetup.utils.Logger
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,10 +17,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Logger.d("onCreate")
+        //Logger.d("onCreate")
 
         val binding: ActivityMainBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+
 
         drawerLayout = binding.drawerLayout
         navController = findNavController(R.id.navHostFragment)
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         return NavigationUI.navigateUp(navController, drawerLayout)
     }
 
-    override fun onStart() {
+    /*override fun onStart() {
         super.onStart()
         Logger.d("onStart")
     }
@@ -61,5 +62,5 @@ class MainActivity : AppCompatActivity() {
     override fun onRestart() {
         super.onRestart()
         Logger.d("onRestart")
-    }
+    }*/
 }

@@ -27,3 +27,5 @@ inline fun <reified T : ViewModel> FragmentActivity.getViewModel(noinline creato
     else
         ViewModelProviders.of(this, BaseViewModelFactory(creator)).get(T::class.java)
 }
+
+

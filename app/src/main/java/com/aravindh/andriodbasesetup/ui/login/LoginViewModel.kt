@@ -1,13 +1,23 @@
 package com.aravindh.andriodbasesetup.ui.login
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.aravindh.andriodbasesetup.utils.ErrorCodes
 import com.aravindh.andriodbasesetup.utils.Logger
 
-class LoginViewModel(finalScore: Int) : ViewModel() {
+class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
-    val finalScore = 7
+
+    //Get values from login form
+    var email: String? = null
+    var password: String? = null
+
+    //ERROR STATUS
+    private var _status = MutableLiveData<Int>()
+    val status: LiveData<Int>
+        get() = _status
 
     private val _navigate = MutableLiveData<Boolean>()
     val navigate: LiveData<Boolean>
@@ -19,15 +29,30 @@ class LoginViewModel(finalScore: Int) : ViewModel() {
         get() = _randomNumber
 
     init {
-        Logger.d("LoginViewModel created $finalScore")
-
         _navigate.value = false
         _randomNumber.value = getRandomNumber()
     }
 
     fun navigate() {
-        _randomNumber.value = getRandomNumber()
-        _navigate.value = true
+
+        //            UiUtils.showMessage(getApplication(), "Email or Password is empty")
+
+        if (email.isNullOrEmpty()) {
+            Logger.d("Email is empty")
+            _status.value = ErrorCodes.ERROR_EMAIL
+            return
+        } else if (password.isNullOrEmpty()) {
+            Logger.d("Password is empty")
+            _status.value = ErrorCodes.ERROR_PASSWORD
+        } else {
+            _status.value = ErrorCodes.SUCCESS
+            Logger.d("Email : $email")
+            Logger.d("Password : $password")
+        }
+
+
+//        _randomNumber.value = getRandomNumber()
+//        _navigate.value = true
     }
 
 

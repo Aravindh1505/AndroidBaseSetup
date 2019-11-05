@@ -1,4 +1,4 @@
-package com.aravindh.andriodbasesetup.database
+package com.aravindh.andriodbasesetup.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -9,11 +9,11 @@ data class User(
     @PrimaryKey(autoGenerate = true)
     val userId: Long = 0L,
 
-    val userName: String,
+    val userName: String?,
 
-    val userMobileNumber: Long,
+    val userMobileNumber: String?,
 
-    val userEmailAddress: String,
+    val userEmailAddress: String?,
 
-    val userPassword: String
+    val userPassword: String?
 )
