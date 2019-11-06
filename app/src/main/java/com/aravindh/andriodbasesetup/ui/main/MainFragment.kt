@@ -3,7 +3,6 @@ package com.aravindh.andriodbasesetup.ui.main
 
 import android.os.Bundle
 import android.view.*
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -29,9 +28,7 @@ class MainFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_main, container, false
-        )
+        binding = FragmentMainBinding.inflate(inflater, container, false)
 
         myLifeCycleOwner = MyLifeCycleOwner(this.lifecycle)
 
@@ -44,13 +41,12 @@ class MainFragment : BaseFragment() {
             )
         }
 
-        if (savedInstanceState != null) {
-            // savedInstanceState.getString(EDIT_TEXT_VALUE)?.let { Logger.d("EDIT_TEXT_VALUE : $it") }
-           // binding.messageEditText.setText(savedInstanceState.getString(EDIT_TEXT_VALUE))
-        }
-
         binding.buttonRegister.setOnClickListener {
             navigationTransaction(MainFragmentDirections.actionMainFragmentToRegisterFragment())
+        }
+
+        binding.buttonPhotos.setOnClickListener {
+            navigationTransaction(MainFragmentDirections.actionMainFragmentToPhotosFragment())
         }
 
         setHasOptionsMenu(true)

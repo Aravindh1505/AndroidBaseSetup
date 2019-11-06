@@ -42,7 +42,11 @@ class RegisterFragment : BaseFragment() {
         binding.registrationViewModel = viewModel
         binding.lifecycleOwner = this
 
-        val adapter = UserAdapter()
+        val adapter = UserAdapter(UserAdapter.UserListener { userId ->
+            showToast("User Id : $userId")
+        })
+
+
         binding.userRecyclerView.adapter = adapter
 
 

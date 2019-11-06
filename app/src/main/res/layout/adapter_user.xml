@@ -6,14 +6,20 @@
         <variable
             name="user"
             type="com.aravindh.andriodbasesetup.database.entities.User" />
+
+        <variable
+            name="clickListener"
+            type="com.aravindh.andriodbasesetup.ui.register.UserAdapter.UserListener" />
     </data>
 
 
     <LinearLayout
+        android:id="@+id/linear_layout_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:background="@color/colorBackground"
+        android:onClick="@{()->clickListener.onClick(user)}"
         android:orientation="vertical"
         android:padding="10dp">
 

@@ -24,6 +24,13 @@
             app:exitAnim="@anim/exit_anim"
             app:popEnterAnim="@anim/pop_enter_anim"
             app:popExitAnim="@anim/pop_exit_anim" />
+        <action
+            android:id="@+id/action_mainFragment_to_photosFragment"
+            app:destination="@id/photosFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -67,4 +74,9 @@
         android:name="com.aravindh.andriodbasesetup.ui.register.RegisterFragment"
         android:label="@string/st_register"
         tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/photosFragment"
+        android:name="com.aravindh.andriodbasesetup.ui.photos.PhotosFragment"
+        android:label="PhotosFragment"
+        tools:layout="@layout/fragment_photos" />
 </navigation>

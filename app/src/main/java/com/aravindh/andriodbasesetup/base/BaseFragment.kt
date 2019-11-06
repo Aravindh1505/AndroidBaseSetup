@@ -21,7 +21,7 @@ open class BaseFragment : Fragment() {
 
     //TOAST MESSAGE
     fun showToast(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
     //NAVIGATION DIRECTIONS

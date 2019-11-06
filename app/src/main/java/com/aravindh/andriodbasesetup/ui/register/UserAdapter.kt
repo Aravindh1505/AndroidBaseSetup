@@ -8,21 +8,26 @@ import androidx.recyclerview.widget.RecyclerView
 import com.aravindh.andriodbasesetup.database.entities.User
 import com.aravindh.andriodbasesetup.databinding.AdapterUserBinding
 
-class UserAdapter : ListAdapter<User, UserAdapter.ViewHolder>(UserDiffCallback()) {
+class UserAdapter(private val clickListener: UserListener) :
+    ListAdapter<User, UserAdapter.ViewHolder>(UserDiffCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
+        ViewHolder.from(parent)
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val user = getItem(position)
-        holder.bind(user)
+        holder.bind(clickListener, user)
     }
 
     class ViewHolder private constructor(val binding: AdapterUserBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(user: User) {
+        fun bind(
+            clickListener: UserListener,
+            user: User
+        ) {
             binding.user = user
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
 
@@ -43,7 +48,11 @@ class UserAdapter : ListAdapter<User, UserAdapter.ViewHolder>(UserDiffCallback()
         override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
             return oldItem == newItem
         }
+    }
 
+
+    class UserListener(val clickListener: (userId: Long) -> Unit) {
+        fun onClick(user: User) = clickListener(user.userId)
     }
 
 }
