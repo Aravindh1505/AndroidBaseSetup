@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.aravindh.andriodbasesetup.database.entities.Photos
 import com.aravindh.andriodbasesetup.databinding.AdapterPhotosBinding
 
 class PhotosAdapter(private val clickListener: PhotoListener) :
@@ -51,6 +52,6 @@ class PhotosDiffUtilCallback : DiffUtil.ItemCallback<Photos>() {
     }
 }
 
-class PhotoListener(val clickListener: (photoPath: String) -> Unit) {
-    fun onClick(photos: Photos) = clickListener(photos.photoPath)
+class PhotoListener(val clickListener: (photo: Photos) -> Unit) {
+    fun onClick(photos: Photos) = clickListener(photos)
 }

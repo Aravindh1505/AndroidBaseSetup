@@ -78,5 +78,24 @@
         android:id="@+id/photosFragment"
         android:name="com.aravindh.andriodbasesetup.ui.photos.PhotosFragment"
         android:label="PhotosFragment"
-        tools:layout="@layout/fragment_photos" />
+        tools:layout="@layout/fragment_photos">
+
+        <action
+            android:id="@+id/action_photosFragment_to_viewPhotosFragment"
+            app:destination="@id/viewPhotosFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/viewPhotosFragment"
+        android:name="com.aravindh.andriodbasesetup.ui.photos.viewphotos.ViewPhotosFragment"
+        android:label="ViewPhotosFragment"
+        tools:layout="@layout/fragment_view_photos">
+
+        <argument
+            android:name="photo"
+            app:argType="com.aravindh.andriodbasesetup.database.entities.Photos" />
+
+
+    </fragment>
 </navigation>

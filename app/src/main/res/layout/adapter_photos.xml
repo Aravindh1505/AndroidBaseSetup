@@ -5,7 +5,7 @@
 
         <variable
             name="photos"
-            type="com.aravindh.andriodbasesetup.ui.photos.Photos" />
+            type="com.aravindh.andriodbasesetup.database.entities.Photos" />
 
         <variable
             name="clickListener"
@@ -17,10 +17,10 @@
         android:id="@+id/linear_layout_user"
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:layout_margin="5dp"
         android:background="@color/colorBackground"
         android:onClick="@{()->clickListener.onClick(photos)}"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:orientation="vertical">
 
 
         <ImageView

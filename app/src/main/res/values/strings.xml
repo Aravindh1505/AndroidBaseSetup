@@ -9,6 +9,7 @@
     <string name="st_settings">Settings</string>
 
     <string name="random_number">Number %d</string>
+    <string name="st_status">status</string>
 
 
 </resources>

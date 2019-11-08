@@ -1,49 +1,36 @@
 package com.aravindh.andriodbasesetup.ui.photos
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.aravindh.andriodbasesetup.network.API
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import com.aravindh.andriodbasesetup.database.dao.PhotosDao
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class PhotosViewModel : ViewModel() {
+class PhotosViewModel(val photosDao: PhotosDao, application: Application) :
+    AndroidViewModel(application) {
 
-
-    //STATUS OF API CALL
-    private val _status = MutableLiveData<String>()
-    val status: LiveData<String>
-        get() = _status
-
-    private val _photosList = MutableLiveData<List<Photos>>()
-    val photosList: LiveData<List<Photos>>
-        get() = _photosList
 
     private val viewModelJob = Job()
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
+    private val photosRepository = PhotosRepository(photosDao)
 
     init {
         getPhotos()
     }
 
+    val photosList = photosRepository.photoList
+    val status = photosRepository.status
+
+
     private fun getPhotos() {
         coroutineScope.launch {
-            val getPhotosDeferred = API.retrofitApiService.getPhotosAsync()
-            try {
-                val response = getPhotosDeferred.await()
-
-                _photosList.value = response
-                _status.value = response.size.toString()
-            } catch (e: Exception) {
-                _status.value = "Failure : ${e.message}"
-            }
+            photosRepository.getPhotos()
         }
     }
 
-    fun getRandomNumber(): Int = (0..100).random()
 
     override fun onCleared() {
         super.onCleared()

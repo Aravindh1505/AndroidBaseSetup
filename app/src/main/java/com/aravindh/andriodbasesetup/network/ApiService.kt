@@ -1,6 +1,6 @@
 package com.aravindh.andriodbasesetup.network
 
-import com.aravindh.andriodbasesetup.ui.photos.Photos
+import com.aravindh.andriodbasesetup.database.entities.Photos
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 

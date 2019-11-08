@@ -84,7 +84,6 @@
             android:text="@string/st_register"
             android:textAllCaps="false" />
 
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/user_recycler_view"
             android:layout_width="match_parent"
