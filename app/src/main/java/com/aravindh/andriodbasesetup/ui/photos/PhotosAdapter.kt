@@ -52,6 +52,10 @@ class PhotosDiffUtilCallback : DiffUtil.ItemCallback<Photos>() {
     }
 }
 
+class ClickListener(val clickListener: (T: Any) -> Unit) {
+    fun onClick(T: Any) = clickListener(T)
+}
+
 class PhotoListener(val clickListener: (photo: Photos) -> Unit) {
     fun onClick(photos: Photos) = clickListener(photos)
 }
