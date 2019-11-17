@@ -5,6 +5,8 @@ fun main() {
     val isPalindrome = checkIsPalindromeWithLoop("ABA")
     println("isPalindrome $isPalindrome")
 
+    //Demo Activity
+
 }
 
 fun checkIsPalindrome(str: String): Boolean {
