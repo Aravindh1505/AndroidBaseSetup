@@ -19,7 +19,7 @@
         tools:replace="android:usesCleartextTraffic"
         tools:targetApi="n">
 
-        <activity android:name=".dagger.DaggerActivity">
+        <activity android:name="com.aravindh.andriodbasesetup.ui.movie.FoodActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
