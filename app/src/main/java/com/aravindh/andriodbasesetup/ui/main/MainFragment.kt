@@ -4,12 +4,14 @@ package com.aravindh.andriodbasesetup.ui.main
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.aravindh.andriodbasesetup.R
 import com.aravindh.andriodbasesetup.base.BaseFragment
 import com.aravindh.andriodbasesetup.databinding.FragmentMainBinding
 import com.aravindh.andriodbasesetup.utils.Logger
+import com.aravindh.andriodbasesetup.utils.getViewModel
 
 /**
  * A simple [Fragment] subclass.
@@ -31,8 +33,15 @@ class MainFragment : BaseFragment() {
         binding = FragmentMainBinding.inflate(inflater, container, false)
 
         myLifeCycleOwner = MyLifeCycleOwner(this.lifecycle)
-
         setHasOptionsMenu(true)
+
+        val viewModel = getViewModel {
+            MainViewModel()
+        }
+
+        viewModel.photos.observe(this, Observer {
+            Logger.d(it.size.toString())
+        })
 
 
         return binding.root
