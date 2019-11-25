@@ -39,9 +39,9 @@ android {
         experimental = true
     }
 
-    kapt {
+    /*kapt {
         generateStubs = true
-    }
+    }*/
 }
 
 dependencies {
@@ -91,7 +91,7 @@ dependencies {
 
     //Glide
     implementation "com.github.bumptech.glide:glide:$version_glide"
-    annotationProcessor "com.github.bumptech.glide:compiler:$version_glide"
+    kapt "com.github.bumptech.glide:compiler:$version_glide"
 
     //Dagger
     implementation "com.google.dagger:dagger:$version_dagger"
