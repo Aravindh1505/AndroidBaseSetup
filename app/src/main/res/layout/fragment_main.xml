@@ -5,31 +5,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/button_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/dimen_20dp"
-            android:layout_above="@+id/button_register"
-            android:text="@string/st_login" />
-
-        <Button
-            android:id="@+id/button_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="@dimen/dimen_20dp"
-            android:text="@string/st_register" />
-
-        <Button
-            android:id="@+id/button_photos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/button_register"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="@dimen/dimen_20dp"
-            android:text="Photos" />
 
     </RelativeLayout>
 </layout>

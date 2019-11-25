@@ -10,9 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.aravindh.andriodbasesetup.R
 import com.aravindh.andriodbasesetup.database.entities.Photos
 import com.aravindh.andriodbasesetup.network.ApiStatus
-import com.aravindh.andriodbasesetup.ui.movie.FoodAdapter
-import com.aravindh.andriodbasesetup.ui.movie.model.Fnblist
-import com.aravindh.andriodbasesetup.ui.photos.PhotosAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
@@ -33,11 +30,11 @@ fun bindImage(imageView: ImageView, imageUrl: String?) {
     }
 }
 
-@BindingAdapter("listPhotosData")
+/*@BindingAdapter("listPhotosData")
 fun bindRecyclerView(recyclerView: RecyclerView, data: List<Photos>?) {
-    val adapter = recyclerView.adapter as PhotosAdapter
-    adapter.submitList(data)
-}
+  *//*  val adapter = recyclerView.adapter as PhotosAdapter
+    adapter.submitList(data)*//*
+}*/
 
 @BindingAdapter("apiStatus")
 fun bindStatus(imageView: ImageView, status: ApiStatus?) {
@@ -68,11 +65,4 @@ fun passwordValidator(editText: EditText, password: String) {
         editText.error = "Password must be minimum $minimumLength length"
     } else
         editText.error = null
-}
-
-
-@BindingAdapter("listFoodData")
-fun bindFoodRecyclerView(recyclerView: RecyclerView, data: List<Fnblist>?) {
-    val adapter = recyclerView.adapter as FoodAdapter
-    adapter.submitList(data)
 }

@@ -32,23 +32,6 @@ class MainFragment : BaseFragment() {
 
         myLifeCycleOwner = MyLifeCycleOwner(this.lifecycle)
 
-        //Navigation Controller
-        binding.buttonLogin.setOnClickListener {
-            navigationTransaction(
-                MainFragmentDirections.actionMainFragmentToLoginFragment(
-                    "user"
-                )
-            )
-        }
-
-        binding.buttonRegister.setOnClickListener {
-            navigationTransaction(MainFragmentDirections.actionMainFragmentToRegisterFragment())
-        }
-
-        binding.buttonPhotos.setOnClickListener {
-            navigationTransaction(MainFragmentDirections.actionMainFragmentToPhotosFragment())
-        }
-
         setHasOptionsMenu(true)
 
 
