@@ -35,6 +35,8 @@ class MainFragment : BaseFragment() {
         myLifeCycleOwner = MyLifeCycleOwner(this.lifecycle)
         setHasOptionsMenu(true)
 
+
+
         val viewModel = getViewModel {
             MainViewModel()
         }

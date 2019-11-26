@@ -27,7 +27,6 @@ class MainViewModel : ViewModel() {
     private fun getPhotos() {
         coroutineScope.launch {
             mainRepository.getPhotos()
-
         }
 
     }
