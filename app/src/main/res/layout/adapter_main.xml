@@ -9,14 +9,14 @@
 
         <variable
             name="clickListener"
-            type="com.aravindh.andriodbasesetup.ui.main.MainClickListener" />
+            type="com.aravindh.andriodbasesetup.ui.adapter.MainClickListener" />
     </data>
 
 
     <LinearLayout
         android:id="@+id/linear_layout_user"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="250dp"
         android:layout_margin="5dp"
         android:background="@color/colorBackground"
         android:onClick="@{()->clickListener.onClick(photos)}"

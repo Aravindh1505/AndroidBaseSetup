@@ -2,6 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.aravindh.andriodbasesetup.viewmodel.MainViewModel" />
+    </data>
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -9,8 +17,14 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_photos"
             android:layout_width="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <ImageView
+            apiStatus="@{viewModel.status}"
+            android:layout_width="@dimen/dimen_150dp"
+            android:layout_height="@dimen/dimen_150dp"
+            android:layout_centerInParent="true" />
 
     </RelativeLayout>
 </layout>

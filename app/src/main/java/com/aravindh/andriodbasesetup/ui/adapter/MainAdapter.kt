@@ -1,4 +1,4 @@
-package com.aravindh.andriodbasesetup.ui.main
+package com.aravindh.andriodbasesetup.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,12 +8,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.aravindh.andriodbasesetup.database.entities.Photos
 import com.aravindh.andriodbasesetup.databinding.AdapterMainBinding
 
+
 class MainAdapter(val clickListener: MainClickListener) :
-    ListAdapter<Photos, MainAdapter.ViewHolder>(MainDiffUtilCallback()) {
+    ListAdapter<Photos, MainAdapter.ViewHolder>(
+        MainDiffUtilCallback()
+    ) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-        ViewHolder.from(parent)
+        ViewHolder.from(
+            parent
+        )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(clickListener, getItem(position))
@@ -33,7 +38,9 @@ class MainAdapter(val clickListener: MainClickListener) :
             fun from(parent: ViewGroup): ViewHolder {
                 val binding =
                     AdapterMainBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                return ViewHolder(binding)
+                return ViewHolder(
+                    binding
+                )
             }
         }
     }

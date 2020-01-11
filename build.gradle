@@ -22,7 +22,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.2'
+        classpath 'com.android.tools.build:gradle:3.5.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$version_kotlin"
         classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:$version_navigation"
 
@@ -35,7 +35,8 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+
+        maven {url "https://jitpack.io"}
     }
 }
 

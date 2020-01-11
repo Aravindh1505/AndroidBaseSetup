@@ -1,11 +1,11 @@
-package com.aravindh.andriodbasesetup.ui.main
+package com.aravindh.andriodbasesetup.utils
 
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
-import com.aravindh.andriodbasesetup.utils.Logger
 
-class MyLifeCycleOwner(lifeCycle: Lifecycle) : LifecycleObserver {
+
+class MainLifeCycleOwner(lifeCycle: Lifecycle) : LifecycleObserver {
 
     init {
         lifeCycle.addObserver(this)

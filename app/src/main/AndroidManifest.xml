@@ -16,16 +16,25 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
-        tools:replace="android:usesCleartextTraffic"
         tools:targetApi="n">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".learn.DemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <service android:name=".learn.MyService" />
+
+        <receiver android:name=".learn.MyBroadCastReceiver">
+            <intent-filter>
+                <action android:name="com.CUSTOM_INTENT"/>
+            </intent-filter>
+        </receiver>
+
 
         <meta-data
             android:name="preloaded_fonts"

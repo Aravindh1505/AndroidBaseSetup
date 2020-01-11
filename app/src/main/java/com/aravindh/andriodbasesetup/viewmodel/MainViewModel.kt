@@ -1,6 +1,7 @@
-package com.aravindh.andriodbasesetup.ui.main
+package com.aravindh.andriodbasesetup.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.aravindh.andriodbasesetup.repositary.MainRepository
 import com.aravindh.andriodbasesetup.utils.Logger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +14,8 @@ class MainViewModel : ViewModel() {
 
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    private val mainRepository = MainRepository()
+    private val mainRepository =
+        MainRepository()
 
     init {
         Logger.d("MainViewModel initiated...")
@@ -21,7 +23,9 @@ class MainViewModel : ViewModel() {
         getPhotos()
     }
 
+
     val photos = mainRepository.photos
+    val status = mainRepository.status
 
 
     private fun getPhotos() {

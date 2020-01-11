@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        tools:context=".learn.DemoActivity">
+
+        <Button
+            android:id="@+id/buttonStartService"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="START SERVICE" />
+
+        <Button
+            android:id="@+id/buttonStopService"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="STOP SERVICE" />
+
+        <EditText
+            android:id="@+id/editTextBroadCastMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Enter message here" />
+
+
+        <Button
+            android:id="@+id/buttonBroadCastReceiver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Broad Cast Receiver" />
+
+    </LinearLayout>
+</layout>

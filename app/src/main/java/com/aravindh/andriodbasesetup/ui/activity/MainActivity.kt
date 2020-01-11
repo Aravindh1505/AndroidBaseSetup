@@ -1,4 +1,4 @@
-package com.aravindh.andriodbasesetup
+package com.aravindh.andriodbasesetup.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.aravindh.andriodbasesetup.R
 import com.aravindh.andriodbasesetup.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -20,7 +21,9 @@ class MainActivity : AppCompatActivity() {
         //Logger.d("onCreate")
 
         val binding: ActivityMainBinding =
-            DataBindingUtil.setContentView(this, R.layout.activity_main)
+            DataBindingUtil.setContentView(this,
+                R.layout.activity_main
+            )
 
 
 
