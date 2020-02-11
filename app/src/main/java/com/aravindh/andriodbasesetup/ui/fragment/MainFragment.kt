@@ -37,7 +37,7 @@ class MainFragment : BaseFragment() {
     ): View? {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
-        binding.viewModel = viewModel
+        binding.mainViewModel = viewModel
 
 
         val mainLifeCycleOwner =
@@ -58,7 +58,7 @@ class MainFragment : BaseFragment() {
 
 
 
-        val sharedPref = context?.let { SharedPref().getSharedPref(it) }
+        //val sharedPref = context?.let { SharedPref().getSharedPref(it) }
 
 
 

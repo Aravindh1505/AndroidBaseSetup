@@ -5,7 +5,7 @@
     <data>
 
         <variable
-            name="viewModel"
+            name="mainViewModel"
             type="com.aravindh.andriodbasesetup.viewmodel.MainViewModel" />
     </data>
 
@@ -21,7 +21,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <ImageView
-            apiStatus="@{viewModel.status}"
+            apiStatus="@{mainViewModel.status}"
             android:layout_width="@dimen/dimen_150dp"
             android:layout_height="@dimen/dimen_150dp"
             android:layout_centerInParent="true" />

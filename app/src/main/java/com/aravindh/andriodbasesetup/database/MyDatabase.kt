@@ -4,15 +4,25 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.aravindh.andriodbasesetup.database.dao.DepartmentDao
 import com.aravindh.andriodbasesetup.database.dao.PhotosDao
-import com.aravindh.andriodbasesetup.database.dao.UserDao
+import com.aravindh.andriodbasesetup.database.dao.StudentDao
+import com.aravindh.andriodbasesetup.database.entities.Department
 import com.aravindh.andriodbasesetup.database.entities.Photos
-import com.aravindh.andriodbasesetup.database.entities.User
+import com.aravindh.andriodbasesetup.database.entities.Student
+import com.aravindh.andriodbasesetup.database.views.StudentViews
 
-@Database(entities = [User::class, Photos::class], version = 1, exportSchema = false)
+@Database(
+    entities = [Student::class, Photos::class, Department::class],
+    views = [StudentViews::class],
+    version = 1,
+    exportSchema = true
+)
 abstract class MyDatabase : RoomDatabase() {
 
-    abstract val userDao: UserDao
+    abstract val studentDao: StudentDao
+
+    abstract val departmentDao: DepartmentDao
 
     abstract val photosDao: PhotosDao
 
@@ -30,7 +40,7 @@ abstract class MyDatabase : RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         MyDatabase::class.java,
-                        "my_database"
+                        "my_database.db"
                     ).fallbackToDestructiveMigration().allowMainThreadQueries().build()
 
                     INSTANCE = instance
