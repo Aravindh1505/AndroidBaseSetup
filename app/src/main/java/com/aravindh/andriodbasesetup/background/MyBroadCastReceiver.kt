@@ -1,9 +1,10 @@
-package com.aravindh.andriodbasesetup.learn
+package com.aravindh.andriodbasesetup.background
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
+import com.aravindh.andriodbasesetup.learn.BROADCAST_MESSAGE
 
 
 /**

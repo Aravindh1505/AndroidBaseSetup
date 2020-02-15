@@ -14,7 +14,7 @@ import com.aravindh.andriodbasesetup.ui.adapter.MainAdapter
 import com.aravindh.andriodbasesetup.ui.adapter.MainClickListener
 import com.aravindh.andriodbasesetup.utils.Logger
 import com.aravindh.andriodbasesetup.utils.MainLifeCycleOwner
-import com.aravindh.andriodbasesetup.utils.SharedPref
+import com.aravindh.andriodbasesetup.utils.getViewModel
 import com.aravindh.andriodbasesetup.viewmodel.MainViewModel
 
 /**
@@ -27,8 +27,10 @@ class MainFragment : BaseFragment() {
 
     private lateinit var binding: FragmentMainBinding
 
-    private lateinit var viewModel: MainViewModel
-
+    //    private lateinit var viewModel: MainViewModel
+    private val viewModel by lazy {
+        getViewModel { MainViewModel() }
+    }
 
 
     override fun onCreateView(
@@ -57,9 +59,7 @@ class MainFragment : BaseFragment() {
         })
 
 
-
         //val sharedPref = context?.let { SharedPref().getSharedPref(it) }
-
 
 
         return binding.root

@@ -2,6 +2,7 @@ package com.aravindh.andriodbasesetup
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.aravindh.andriodbasesetup.learn.Singleton
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -18,5 +19,13 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.aravindh.andriodbasesetup", appContext.packageName)
+    }
+
+    @Test
+    fun testSingleton(){
+        for (i in 0..10){
+            val singleton = Singleton.getInstance()
+            println(singleton.hashCode())
+        }
     }
 }

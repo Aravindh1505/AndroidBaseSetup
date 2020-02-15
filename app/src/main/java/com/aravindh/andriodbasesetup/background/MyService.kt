@@ -1,4 +1,4 @@
-package com.aravindh.andriodbasesetup.learn
+package com.aravindh.andriodbasesetup.background
 
 import android.app.Service
 import android.content.Intent
@@ -34,7 +34,7 @@ class MyService : Service() {
         timer = Timer()
 
         mediaPlayer = MediaPlayer.create(this, R.raw.sample)
-        mediaPlayer?.isLooping = false
+        mediaPlayer?.isLooping = true
 
     }
 

@@ -1,4 +1,4 @@
-package com.aravindh.andriodbasesetup.binding
+package com.aravindh.andriodbasesetup.utils
 
 import android.text.TextUtils
 import android.view.View

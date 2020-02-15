@@ -1,5 +1,6 @@
 package com.aravindh.andriodbasesetup.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -9,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.aravindh.andriodbasesetup.R
 import com.aravindh.andriodbasesetup.databinding.ActivityMainBinding
+import com.aravindh.andriodbasesetup.utils.Logger
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,12 +20,36 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //Logger.d("onCreate")
+        Logger.d("onCreate")
 
         val binding: ActivityMainBinding =
-            DataBindingUtil.setContentView(this,
+            DataBindingUtil.setContentView(
+                this,
                 R.layout.activity_main
             )
+
+
+        val intent = intent.extras
+        intent?.let {
+            Logger.d("notification url " + it.getString("url"))
+            Logger.d("notification type " + it.getString("type"))
+            startActivity(Intent(this, NotificationActivity::class.java))
+        }
+
+
+        /*FirebaseInstanceId.getInstance().instanceId
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Logger.d("getInstanceId failed" + task.exception)
+                    return@OnCompleteListener
+                }
+
+                // Get new Instance ID token
+                val token = task.result?.token
+
+                Logger.d(token!!)
+                Toast.makeText(baseContext, token, Toast.LENGTH_SHORT).show()
+            })*/
 
 
 
@@ -37,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         return NavigationUI.navigateUp(navController, drawerLayout)
     }
 
-    /*override fun onStart() {
+    override fun onStart() {
         super.onStart()
         Logger.d("onStart")
     }
@@ -65,5 +91,5 @@ class MainActivity : AppCompatActivity() {
     override fun onRestart() {
         super.onRestart()
         Logger.d("onRestart")
-    }*/
+    }
 }

@@ -2,23 +2,25 @@ package com.aravindh.andriodbasesetup.ui.fragment
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-
+import com.aravindh.andriodbasesetup.base.BaseFragment
 import com.aravindh.andriodbasesetup.database.MyDatabase
 import com.aravindh.andriodbasesetup.database.entities.Department
 import com.aravindh.andriodbasesetup.database.entities.Student
 import com.aravindh.andriodbasesetup.databinding.FragmentStudentBinding
 import com.aravindh.andriodbasesetup.utils.DEPARTMENT
 import com.aravindh.andriodbasesetup.utils.Logger
+import com.aravindh.andriodbasesetup.utils.getViewModel
+import com.aravindh.andriodbasesetup.viewmodel.StudentViewModel
 
 /**
  * A simple [Fragment] subclass.
  */
-class StudentFragment : Fragment() {
+class StudentFragment : BaseFragment() {
 
     private lateinit var database: MyDatabase
 
@@ -33,14 +35,24 @@ class StudentFragment : Fragment() {
             database = MyDatabase.getInstance(it)
         }
 
+
+        val viewModel = getViewModel { StudentViewModel(database) }
+
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+
+
         addDepartment()
         addStudent()
-
         getStudents()
-
 
         return binding.root
     }
+
+    init {
+
+    }
+
 
     private fun addDepartment() {
         val departmentList = arrayListOf<Department>()
@@ -85,7 +97,7 @@ class StudentFragment : Fragment() {
         database.studentDao.insert(studentList)
     }
 
-    fun getStudents() {
+    private fun getStudents() {
         database.studentDao.getStudentsBasedOnDepartment().observe(this, Observer {
             Logger.d("list size : ${it.size}")
 

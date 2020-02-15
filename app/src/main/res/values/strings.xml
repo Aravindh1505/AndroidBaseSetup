@@ -11,5 +11,6 @@
     <string name="random_number">Number %d</string>
     <string name="st_status">status</string>
 
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
 
 </resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "282354605264",
+    "firebase_url": "https://androidbase-f6370.firebaseio.com",
+    "project_id": "androidbase-f6370",
+    "storage_bucket": "androidbase-f6370.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:282354605264:android:0163532410b975dadfd2d5",
+        "android_client_info": {
+          "package_name": "com.aravindh.andriodbasesetup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "282354605264-d2j827fcqs1ued3ljr56765uo41gop3f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA8INrCV2OlSyFc8osSVNaj3LD_EjLCD9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "282354605264-d2j827fcqs1ued3ljr56765uo41gop3f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
