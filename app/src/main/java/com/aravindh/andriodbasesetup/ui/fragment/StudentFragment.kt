@@ -22,7 +22,7 @@ import com.aravindh.andriodbasesetup.viewmodel.StudentViewModel
  */
 class StudentFragment : BaseFragment() {
 
-    private lateinit var database: MyDatabase
+    private var database: MyDatabase? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,7 +66,7 @@ class StudentFragment : BaseFragment() {
         departmentList.add(departmentEnglish)
         departmentList.add(departmentMaths)
 
-        database.departmentDao.insert(departmentList)
+        database?.departmentDao?.insert(departmentList)
     }
 
     private fun addStudent() {
@@ -94,12 +94,14 @@ class StudentFragment : BaseFragment() {
         studentList.add(student1)
         studentList.add(student2)
 
-        database.studentDao.insert(studentList)
+        database?.studentDao?.insert(studentList)
     }
 
     private fun getStudents() {
-        database.studentDao.getStudentsBasedOnDepartment().observe(this, Observer {
+        database?.studentDao?.getStudentsBasedOnDepartment()?.observe(this, Observer {
             Logger.d("list size : ${it.size}")
+
+
 
             for (student in it) {
                 Logger.d("studentId : ${student.studentId}")

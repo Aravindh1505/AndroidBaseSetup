@@ -1,23 +1,13 @@
 package com.aravindh.andriodbasesetup.base
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 
-open class BaseFragment : Fragment() {
+const val SHARED_PREFERENCE_FILE_NAME = "secret_shared_prefs"
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
+open class BaseFragment : Fragment() {
 
     //TOAST MESSAGE
     fun showToast(message: String) {
@@ -27,7 +17,7 @@ open class BaseFragment : Fragment() {
     //NAVIGATION DIRECTIONS
     fun navigationTransaction(navigateTo: NavDirections) {
         view?.findNavController()?.navigate(navigateTo)
-
     }
+
 
 }

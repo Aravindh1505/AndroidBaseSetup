@@ -12,6 +12,8 @@ import com.aravindh.andriodbasesetup.database.entities.Photos
 import com.aravindh.andriodbasesetup.database.entities.Student
 import com.aravindh.andriodbasesetup.database.views.StudentViews
 
+const val DATABASE_NAME = "my_database.db"
+
 @Database(
     entities = [Student::class, Photos::class, Department::class],
     views = [StudentViews::class],
@@ -31,22 +33,21 @@ abstract class MyDatabase : RoomDatabase() {
         @Volatile
         private var INSTANCE: MyDatabase? = null
 
-        fun getInstance(context: Context): MyDatabase {
+        fun getInstance(context: Context): MyDatabase? {
+            var instance = INSTANCE
 
-            synchronized(this) {
-                var instance = INSTANCE
-
-                if (instance == null) {
+            if (instance == null) {
+                synchronized(this) {
                     instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        MyDatabase::class.java,
-                        "my_database.db"
-                    ).fallbackToDestructiveMigration().allowMainThreadQueries().build()
+                        context.applicationContext, MyDatabase::class.java, DATABASE_NAME)
+                        .fallbackToDestructiveMigration()
+                        .allowMainThreadQueries()
+                        .build()
 
                     INSTANCE = instance
                 }
-                return instance
             }
+            return instance
         }
 
     }

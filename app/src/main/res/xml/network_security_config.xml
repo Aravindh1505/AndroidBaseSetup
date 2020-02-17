@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">bloodambulance.com</domain>
+        <domain includeSubdomains="true">portalwebapi.sundram.com</domain>
+        <trust-anchors>
+            <certificates src="user" />
+        </trust-anchors>
     </domain-config>
 </network-security-config>

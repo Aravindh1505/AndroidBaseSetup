@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
-import com.aravindh.andriodbasesetup.learn.BROADCAST_MESSAGE
 
 
 /**
@@ -13,7 +12,7 @@ import com.aravindh.andriodbasesetup.learn.BROADCAST_MESSAGE
 
 class MyBroadCastReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
-        val message = intent?.getStringExtra(BROADCAST_MESSAGE)
+        val message = intent?.getStringExtra("")
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 }

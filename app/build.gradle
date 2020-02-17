@@ -11,12 +11,16 @@ apply plugin: 'androidx.navigation.safeargs'
 apply plugin: 'com.google.gms.google-services'
 
 
+def configPropertiesFile = rootProject.file("config.properties")
+def configProperties = new Properties()
+configProperties.load(new FileInputStream(configPropertiesFile))
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.aravindh.andriodbasesetup"
-        minSdkVersion 20
+        minSdkVersion 23
         targetSdkVersion 29
         vectorDrawables.useSupportLibrary = true
         versionCode 1
@@ -24,6 +28,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
+
+        buildConfigField("String","CLIENT_ID",configProperties['CLIENT_ID'])
     }
     buildTypes {
         development {
@@ -48,6 +54,8 @@ android {
     lintOptions {
         abortOnError true
     }
+
+
 }
 
 dependencies {
@@ -110,5 +118,18 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging:20.1.0'
 
     implementation 'androidx.multidex:multidex:2.0.1'
+
+    //SECURE SHARED PREFERENCE
+    implementation "androidx.security:security-crypto:1.0.0-alpha02"
+
+    //BIO-METRIC
+    implementation 'androidx.biometric:biometric:1.0.1'
+
+    //LOCATION
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+
+    //DEXTER
+    implementation 'com.karumi:dexter:6.0.2'
+
 
 }

@@ -2,45 +2,48 @@ package com.aravindh.andriodbasesetup.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKeys
+import com.aravindh.andriodbasesetup.base.SHARED_PREFERENCE_FILE_NAME
 
 
 /**
  *Created by Aravindh S on 06-01-2020.
  */
 
-const val IS_LOGGED_IN = "is_logged_in"
+class SharedPref(private val context: Context) {
 
-class SharedPref {
-    private val PREF_MODE = Context.MODE_PRIVATE
-    private val PREF_NAME = "MyPref"
+    private lateinit var sharedPreferences: SharedPreferences
 
-    private var sharedPreferences: SharedPreferences? = null
-    private var editor: SharedPreferences.Editor? = null
+    init {
+        setupSharedPref()
+    }
 
-    fun getSharedPref(context: Context): SharedPreferences? {
-        if (sharedPreferences == null) {
-            sharedPreferences = context.getSharedPreferences(PREF_NAME, PREF_MODE)
-        }
-        return sharedPreferences
+    private fun setupSharedPref() {
+        val masterKeyAlias: String = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+
+        sharedPreferences = EncryptedSharedPreferences.create(
+            SHARED_PREFERENCE_FILE_NAME,
+            masterKeyAlias,
+            context,
+            EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+            EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+        )
     }
 
     fun setBoolean(key: String, value: Boolean) {
-        editor = sharedPreferences?.edit()
-        editor?.putBoolean(key, value)
-        editor?.apply()
+        sharedPreferences.edit().putBoolean(key, value).apply()
     }
 
-    fun getBoolean(key: String) {
-        sharedPreferences?.getBoolean(key, false)
+    fun getBoolean(key: String): Boolean {
+        return sharedPreferences.getBoolean(key, false)
     }
 
     fun setString(key: String, value: String) {
-        editor = sharedPreferences?.edit()
-        editor?.putString(key, value)
-        editor?.apply()
+        sharedPreferences.edit().putString(key, value).apply()
     }
 
-    fun getString(key: String) {
-        sharedPreferences?.getString(key, "")
+    fun getString(key: String): String? {
+        return sharedPreferences.getString(key, "")
     }
 }

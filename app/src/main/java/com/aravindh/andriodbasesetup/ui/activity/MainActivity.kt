@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.aravindh.andriodbasesetup.BuildConfig
 import com.aravindh.andriodbasesetup.R
 import com.aravindh.andriodbasesetup.databinding.ActivityMainBinding
 import com.aravindh.andriodbasesetup.utils.Logger
@@ -27,6 +28,8 @@ class MainActivity : AppCompatActivity() {
                 this,
                 R.layout.activity_main
             )
+
+        BuildConfig.CLIENT_ID
 
 
         val intent = intent.extras
