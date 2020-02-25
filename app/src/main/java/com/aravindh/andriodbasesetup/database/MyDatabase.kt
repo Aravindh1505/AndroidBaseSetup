@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.aravindh.andriodbasesetup.database.dao.DepartmentDao
 import com.aravindh.andriodbasesetup.database.dao.PhotosDao
 import com.aravindh.andriodbasesetup.database.dao.StudentDao
@@ -18,7 +20,7 @@ const val DATABASE_NAME = "my_database.db"
     entities = [Student::class, Photos::class, Department::class],
     views = [StudentViews::class],
     version = 1,
-    exportSchema = true
+    exportSchema = false
 )
 abstract class MyDatabase : RoomDatabase() {
 
@@ -30,6 +32,19 @@ abstract class MyDatabase : RoomDatabase() {
 
     companion object {
 
+        private val MIGRATION_1_2 = object : Migration(1, 2) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("")
+            }
+        }
+
+        private val MIGRATION_2_3 = object : Migration(1, 2) {
+            override fun migrate(database: SupportSQLiteDatabase) {
+                database.execSQL("")
+            }
+        }
+
+
         @Volatile
         private var INSTANCE: MyDatabase? = null
 
@@ -39,9 +54,11 @@ abstract class MyDatabase : RoomDatabase() {
             if (instance == null) {
                 synchronized(this) {
                     instance = Room.databaseBuilder(
-                        context.applicationContext, MyDatabase::class.java, DATABASE_NAME)
+                        context.applicationContext, MyDatabase::class.java, DATABASE_NAME
+                    )
                         .fallbackToDestructiveMigration()
                         .allowMainThreadQueries()
+                        .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
                         .build()
 
                     INSTANCE = instance

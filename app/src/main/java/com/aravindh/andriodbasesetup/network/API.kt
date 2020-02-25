@@ -6,7 +6,9 @@ import com.aravindh.andriodbasesetup.utils.Constants
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.io.IOException
@@ -21,11 +23,25 @@ import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManagerFactory
 import javax.net.ssl.X509TrustManager
 
+val certificatePinner = CertificatePinner.Builder()
+    .add(
+        "www.example.com",
+        "sha256/ZC3lTYTDBJQVf1P2V7+fibTqbIsWNR/X7CWNVW+CEEA="
+    ).build()
+
+val okHttpClient = OkHttpClient.Builder()
+    .certificatePinner(certificatePinner)
+    .build()
+
+
+private val logging = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
+
 
 //OKHTTPCLIENT CONFIGURATION FOR READ/CONNECTION TIMEOUT
 private val client: OkHttpClient = OkHttpClient.Builder()
     .readTimeout(Constants.READ_TIMEOUT, TimeUnit.SECONDS)
     .connectTimeout(Constants.CONNECTION_TIMEOUT, TimeUnit.SECONDS)
+    .addInterceptor(logging)
     .build()
 
 //MOSHI LIBRARY FOR CONVERT JOSN OBJECT INTO MODEL CLASS

@@ -4,7 +4,6 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
-import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.aravindh.andriodbasesetup.R
@@ -18,10 +17,10 @@ import com.bumptech.glide.request.RequestOptions
 @BindingAdapter("imageUrl")
 fun bindImage(imageView: ImageView, imageUrl: String?) {
     imageUrl?.let {
-        val imgUri = it.toUri().buildUpon().scheme("http").build()
+       //val imgUri = "https://s3.amazonaws.com/koya-dev-videos/kindness/8da807aa-1e1e-413d-bf9b-5bb084646593/medialibrary/9456621508/videos/1eb78337-d569-41bd-95ad-153d9098de03.png"
 
         Glide.with(imageView.context)
-            .load(imgUri)
+            .load(imageUrl)
             .apply(
                 RequestOptions()
                     .placeholder(R.drawable.loading_animation)

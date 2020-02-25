@@ -9,8 +9,8 @@ import retrofit2.http.GET
 import retrofit2.http.POST
 
 
-//const val BASE_URL = "http://bloodambulance.com/loveapp/php/"
-const val BASE_URL = "https://portalwebapi.sundram.com:4002/auth/v1/"
+const val BASE_URL = "http://bloodambulance.com/loveapp/php/"
+//const val BASE_URL = "https://portalwebapi.sundram.com:4002/auth/v1/"
 
 
 interface ApiService {
